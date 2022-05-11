@@ -1,0 +1,24 @@
+.top {
+    background-color:white;
+    color: black;
+    
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .logo img {
+      width: 60%;
+      height: 50%;
+      margin-right: 5%;
+    
+      
+  }
+  * {
+      
+    
+      color: black;
+  }
+ 
+  .marg{
+      margin-left: 20%;
+  }
+  
+  
