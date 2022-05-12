@@ -22,9 +22,12 @@ justify-content:space-between;
     float:left;
     width: 50%;
     height: 30%;
+    margin-right: 10%;
 }
 .rig{
-   padding-top:20%
+   padding-top:20%;
+   
+
 }
 .rig button{
     width: 200px;
@@ -33,4 +36,7 @@ justify-content:space-between;
     font-weight: 600;
     background-color:rgba(250, 250, 3, 0.906);
     border-radius:10px
+}
+h1{
+    text-align:center;
 }

@@ -1,15 +1,24 @@
-import logo from './logo.svg';
-import './App.css'
-import PrimarySearchAppBar from "../src/Components/Navbar"
-import {HomePage} from "../src/Components/Home"
+import {ProductPage} from './Components/Product.jsx'
+import './App.css';
+import { Routes, Route, } from "react-router-dom";
+import {HomePage} from "./Components/Home"
+import  PrimarySearchAppBar from "./Components/Navbar"
+
 
 function App() {
   return (
-    <div className="App">
-    < PrimarySearchAppBar />
-    < HomePage />
+   <>
+   {/* <Header /> */}
+   <PrimarySearchAppBar />
+    <Routes>
     
-    </div>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/products" element={<ProductPage />} />
+        <Route path="/products:id" element={<ProductPage />} />
+     
+      </Routes>
+  
+   </>
   );
 }
 

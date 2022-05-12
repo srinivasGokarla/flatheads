@@ -19,15 +19,6 @@ import data from'../db.json';
 import "../Styles/Nav.css"
 //console.log(data)
 const axios = require("axios");
-
-
-
-
-
-
-
-
-
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
