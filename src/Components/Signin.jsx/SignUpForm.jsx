@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../Styles/signup.css";
+import "./SignUp.css";
 import {isLoading,isSignup,isError} from "../../redux/signup/actions";
 import {  Navigate } from "react-router-dom";
 

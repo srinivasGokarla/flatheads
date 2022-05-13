@@ -1,4 +1,4 @@
-import {ADDTOCART,REMOVECART,ADJUSTQTY,CURRENTITEM} from './actionTypes'
+import {ADDTOCART,REMOVECART,ADJUSTQTY,CURRENTITEM} from './actionType'
 
 
 

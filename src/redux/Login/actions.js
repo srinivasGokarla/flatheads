@@ -1,5 +1,6 @@
-import {  IS_LOADING,LOG_IN, IS_ERROR  } from "./actionTypes";
-
+import {  IS_LOADING } from "./actiontypes";
+import { LOG_IN } from "./actiontypes";
+import { IS_ERROR} from "./actiontypes";
 
 
 export const isLoading = ()=>({

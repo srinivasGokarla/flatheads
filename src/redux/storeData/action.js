@@ -1,6 +1,6 @@
 
 
-import { STORE_DATA } from "./actionTypes"
+import { STORE_DATA } from "./actionType"
 
 
 

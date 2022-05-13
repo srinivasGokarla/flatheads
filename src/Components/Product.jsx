@@ -1,38 +1,42 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
+import '../Style/product.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { storeData } from '../redux/storeData/actions';
+import { storeData } from '../redux/storeData/action';
 import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 
 // import {useNavigate,useParams} from 'react-router';
 import {Button ,ButtonGroup} from '@mui/material'
-import {addCart} from '../redux/Cart/actions'
+import {addCart} from '../redux/Cart/action'
+
+
 
 
 const ProductPage = () => {
-
+  // const [data, setData] = useState([]);
 
   const [search,setSearch] = useState("")
   const [value,setValue] = useState([])
-	
+	//console.log(search)
   const [val,setVal] = useState("")
-
+// const params = useParams()
+// const navigate = useNavigate()
 
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const fetchData = async () => {
     return axios({
-      url: `http://localhost:8001/shoes?_page=${page}&_limit=10`,
+      url: `http://localhost:3004/shoes?_page=${page}&_limit=20`,
       method: 'GET',
       params: {},
     })
       .then((response) => {
-    
+        // const data =(response.data)
 
-        console.log(response.data)
-      dispatch(storeData(response.data));
+        // console.log(response.data)
+        dispatch(storeData(response.data));
       })
 
       .catch((error) => {});
@@ -46,13 +50,12 @@ const ProductPage = () => {
 
 
   const data = useSelector((state) => state.Data.data);
-  console.log(data)
   const CartData = useSelector((state) => state.Cart.cart);
   console.log(CartData);
 
 
   const Send = (e) => {
-
+   // console.log(e)
   dispatch(addCart(e))
   
   }
@@ -64,21 +67,42 @@ const ProductPage = () => {
     }else if( m==="h"){
       let res = data.sort((a,b) => b.cost - a.cost)
       setValue([...res])
-   
+      //console.log(res)
     }
     
     }
+  
+ 
+  // const filterBycost1 = () => {
+ 
+  //     let productcost = data.filter((p) =>  p.cost >=50000)
+  //     console.log(productcost)
+  //     setValue([...productcost])
+     
+    
+  
+  // }
+  
+  //console.log(setVal)
+
   
   return (
     <div>
   <div>
        <input type="text"placeholder="What are you loooking for" className="search" onChange={(e) => setSearch(e.target.value)} />
         </div>
+
+    
       
 {/* 
         <div>
           products is {params.id}
         </div> */}
+
+
+       
+  
+      
 
     <div className="flex">
        <div >
@@ -99,19 +123,24 @@ const ProductPage = () => {
     
       >
    <div className=""> 
-  <Button className="mt-8 w-32 " onClick= {() => {sortBylow("l")}}>Less price</Button>
+  <Button className="mt-5 w-48" onClick= {() => {sortBylow("l")}}>Low To High</Button>
   </div>
-  <div className="mt-5  bg-red-600">
-  <Button className="mt-8 w-32  " onClick= {() => {sortBylow("h")}}>high price</Button>
+  <div className="mt-5">
+  <Button className="mt-5 w-48" onClick= {() => {sortBylow("h")}}>high to low</Button>
   </div>
   <div className="mt-5">
  
-  <Button className="mt-8 w-32" onClick={() => {setVal("men")}} >men </Button>
+  <Button className="mt-5 w-48" onClick={() => {setVal("sofas")}} >Men </Button>
   </div>
   <div className="mt-5">
-  <Button className="mt-8 w-32"onClick={() => {setVal("women")}} >women</Button>
+  <Button className="mt-5 w-48"onClick={() => {setVal("Chair")}} >Women</Button>
   </div>
-  
+  <div className="mt-5">
+  <Button className="mt-5 w-48" onClick={() => {setVal("Settee")}} >New Arrivals</Button>
+  </div>
+<div className="mt-5"> 
+<Button className="mt-5 w-48" onClick={() => {setVal("Armchair")}} >Shop</Button>
+</div>
       </ButtonGroup>
   
     </Box>
@@ -123,8 +152,8 @@ const ProductPage = () => {
         {data
         .filter((el) => {
           
-          if(el.title === val){
-            return el.title ===val
+          if(el.category === val){
+            return el.category ===val
           }else if(val === ""){
               return el
           }
@@ -145,11 +174,11 @@ const ProductPage = () => {
               <div className="borde w-80 " key={a.id}>
                 <div className="   h-full ">
                   <div >
-                    <img src={a.image} alt="" id="img" />
+                    <img src={a.img[0]} alt="" id="img" />
                   </div>
                   <div className="b  w-2/5 text-white">
                     <div>
-                      <button className="bg-red-500 shadow-lg rounded-2xl p-2 hover:bg-blue-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
+                      <button className="bg-blue-500 shadow-lg rounded-2xl p-2 hover:bg-blue-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
                         Add to cart
                       </button>
                     </div>
@@ -159,12 +188,29 @@ const ProductPage = () => {
                   <div className=" mt-1 mb-2  ">
                    
                       <div className="text-md font-semi-bold borde w-72 ">
-                        {a.title}
+                        {a.name}
                       </div>
 
                       <div className="text-sm mb-5">
-                        <p>₹{a.cost}</p>
+                        <p>{a.madeBy}</p>
                       </div>
+                   
+                    <div className="  ">
+                     <div className="flex w-48">
+                     
+                      <div className="text-red-400 font-bold ">
+                        <p>₹ {a.cost}</p>
+                      </div>
+                      <div className="text-gray-500 ml-5 ">
+                        <p> <del>₹{a.actual_cost}</del></p>
+                      </div>
+                     </div>
+                     
+                      <div className="text-gray-500 mt-2 d2">
+                        <p>Save ₹ {a.total_savings}</p>
+                      </div>
+                     
+                    </div>
                   </div>
                 </div>
               </div>
