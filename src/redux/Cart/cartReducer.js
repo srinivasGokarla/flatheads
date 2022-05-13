@@ -1,7 +1,5 @@
-import { ADDTOCART } from './actionType.js'
-import { CURRENTITEM } from './actionType.js'
-import { ADJUSTQTY} from './actionType.js'
-import { REMOVECART} from './actionType.js'
+import { ADDTOCART, CURRENTITEM,ADJUSTQTY, REMOVECART } from './actionTypes'
+
 
 
 const INITIAL_STATE = {

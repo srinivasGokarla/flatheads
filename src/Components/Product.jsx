@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { storeData } from '../redux/storeData/action';
+import { storeData } from '../redux/storeData/actions';
 import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 
 // import {useNavigate,useParams} from 'react-router';
 import {Button ,ButtonGroup} from '@mui/material'
-import {addCart} from '../redux/Cart/action'
+import {addCart} from '../redux/Cart/actions'
 
 
 const ProductPage = () => {
