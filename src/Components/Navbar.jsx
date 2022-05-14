@@ -36,11 +36,6 @@ const NavBar = () => {
 	  const data = useSelector((state) => state.Cart.cart)
 	 
 
-	//   const totalsum = () => {
-	// 	  const sum = 0
-	// 	  console.log(data.reduce((a,b) => a.price + b.price ,sum))
-	//   }
-  
 
 	  const [showMenu,setShowMenu] = useState(false)
       const [login,setLogin] = useState(false)
@@ -96,14 +91,14 @@ const NavBar = () => {
 								 </div>
 								 <div className="ml-4 ">
 									 <div className="mb-4">
-									 {item.id.name}
+									 {item.id.title}
 									 </div>
 									 <div className="flex">
 										 <div>
-										 {item.id.price}
+										 {item.id.cost}
 										 </div>
 									 
-									 <div className="ml-3 text-gray-500"> <del>{item.id.actual_price}</del></div> 
+									
 									
 									 </div>
 

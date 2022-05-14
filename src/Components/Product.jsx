@@ -7,6 +7,7 @@ import { storeData } from '../redux/storeData/action';
 import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 
+// import {useNavigate,useParams} from 'react-router';
 import {Button ,ButtonGroup} from '@mui/material'
 import {addCart} from '../redux/Cart/action'
 
@@ -18,8 +19,6 @@ const ProductPage = () => {
 
   const [search,setSearch] = useState("")
   const [value,setValue] = useState([])
-  const [todos,setTodos] = useState([]);
- 
 	//console.log(search)
   const [val,setVal] = useState("")
 // const params = useParams()
@@ -27,46 +26,31 @@ const ProductPage = () => {
 
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  // const fetchData = async () => {
-  //   return axios({
-  //     url: `http://localhost:3004/shoes?_page=${page}&_limit=20`,
-  //     method: 'GET',
-  //     params: {},
-  //   })
-  //     .then((response) => {
-  //       // const data =(response.data)
+  const fetchData = async () => {
+    return axios({
+      url: `http://localhost:3004/shoes?_page=${page}&_limit=14`,
+      method: 'GET',
+      params: {},
+    })
+      .then((response) => {
+        // const data =(response.data)
 
-  //       // console.log(response.data)
-  //       dispatch(storeData(response.data));
-  //     })
+        console.log(response.data)
+      dispatch(storeData(response.data));
+      })
 
-  //     .catch((error) => {});
-  // };
+      .catch((error) => {});
+  };
 
-  // useEffect(() => {
-  //   fetchData();
-  // }, [page]);
+  useEffect(() => {
+    fetchData();
+  }, [page]);
 
-useEffect(()=>{
-        getData()
-      },[page])
 
-      const getData = () =>{
-       
-        fetch(`http://localhost:3004/shoes?_page=${page}&_limit=10`).then(d=>d.json()).then(res=>{
-            setTodos(res)
-        
-        }).then((response) => {
-               //  const data =(response.data)
-        
-                //  console.log(response.data)
-                 dispatch(storeData(response.data));
-               })
-        
-               .catch((error) => {});
-    }
+
 
   const data = useSelector((state) => state.Data.data);
+  console.log(data)
   const CartData = useSelector((state) => state.Cart.cart);
   console.log(CartData);
 
@@ -77,18 +61,31 @@ useEffect(()=>{
   
   }
   const sortBylow =(m) => {
-    if(m==="l"){
+    if(m === "l") {
      let res = data.sort((a,b) => a.cost - b.cost)
      setValue([...res])
      //console.log(res)
-    }else if( m==="h"){
+    } else if ( m === "h" ) {
       let res = data.sort((a,b) => b.cost - a.cost)
       setValue([...res])
       //console.log(res)
     }
     
     }
+  
  
+  // const filterByPrice1 = () => {
+ 
+  //     let productPrice = data.filter((p) =>  p.price >=50000)
+  //     console.log(productPrice)
+  //     setValue([...productPrice])
+     
+    
+  
+  // }
+  
+  //console.log(setVal)
+
   
   return (
     <div>
@@ -127,24 +124,11 @@ useEffect(()=>{
     
       >
    <div className=""> 
-  <Button className="mt-5 w-48" onClick= {() => {sortBylow("l")}}>Low To High</Button>
+  <Button className="mt-8 w-32 " onClick= {() => {sortBylow("l")}}>Less price</Button>
   </div>
-  <div className="mt-5">
-  <Button className="mt-5 w-48" onClick= {() => {sortBylow("h")}}>high to low</Button>
+  <div className="mt-5  bg-red-600">
+  <Button className="mt-8 w-32  " onClick= {() => {sortBylow("h")}}>high price</Button>
   </div>
-  <div className="mt-5">
- 
-  <Button className="mt-5 w-48" onClick={() => {setVal("sofas")}} >Men </Button>
-  </div>
-  <div className="mt-5">
-  <Button className="mt-5 w-48"onClick={() => {setVal("Chair")}} >Women</Button>
-  </div>
-  <div className="mt-5">
-  <Button className="mt-5 w-48" onClick={() => {setVal("Settee")}} >New Arrivals</Button>
-  </div>
-<div className="mt-5"> 
-<Button className="mt-5 w-48" onClick={() => {setVal("Armchair")}} >Shop</Button>
-</div>
       </ButtonGroup>
   
     </Box>
@@ -157,7 +141,7 @@ useEffect(()=>{
         .filter((el) => {
           
           if(el.title === val){
-            return el.title ===val
+            return el.title === val
           }else if(val === ""){
               return el
           }
@@ -166,7 +150,7 @@ useEffect(()=>{
           if(search === ""){
             return a
           }else{
-            return a.title.toLowerCase().includes(search.toLowerCase())  || a.title.toLowerCase().includes(search.toLowerCase())  
+            return a.title.toLowerCase().includes(search.toLowerCase())  || a.madeBy.toLowerCase().includes(search.toLowerCase())  
           }
           
         })
@@ -178,11 +162,11 @@ useEffect(()=>{
               <div className="borde w-80 " key={a.id}>
                 <div className="   h-full ">
                   <div >
-                    <img src={a.img[0]} alt="" id="img" />
+                    <img src={a.image} alt="" id="img" />
                   </div>
                   <div className="b  w-2/5 text-white">
                     <div>
-                      <button className="bg-blue-500 shadow-lg rounded-2xl p-2 hover:bg-blue-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
+                      <button className="bg-red-500 shadow-lg rounded-2xl p-2 hover:bg-blue-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
                         Add to cart
                       </button>
                     </div>
@@ -194,6 +178,7 @@ useEffect(()=>{
                       <div className="text-md font-semi-bold borde w-72 ">
                         {a.title}
                       </div>
+
                    
                     <div className="  ">
                      <div className="flex w-48">
@@ -201,7 +186,9 @@ useEffect(()=>{
                       <div className="text-red-400 font-bold ">
                         <p>₹ {a.cost}</p>
                       </div>
+                      
                      </div>
+                     
                     </div>
                   </div>
                 </div>

@@ -22,4 +22,10 @@
   height: 40px;
   margin-left:40%
 }
-
+.test{
+	display:grid;
+	grid-template-columns:25% 25% 25%;
+	grid-gap: 5%;
+	justify-content: center;
+	margin-bottom: 30%;
+}
