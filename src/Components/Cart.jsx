@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import Form from './Signin.jsx/SignUp'
+import Form from './SignUp'
 export const Cart = () => {
   const data1 = useSelector((state) => state.Cart);
   console.log(data1);

@@ -1,4 +1,4 @@
-import "./SignUp.css";
+import "../Style/SignUp.css";
 import SignUpForm from "./SignUpForm";
 import { Link } from "react-router-dom";
 
@@ -8,7 +8,7 @@ function SignUp(){
         <div className="signup-div" >
             <SignUpForm />
             <div className="signup">
-                   Have an account? <Link to="/" className="link"> <span style={{color:"#0095f6",fontWeight:"600"}}> Log in</span> </Link>
+                   Have an account? <Link to="/" className="link"> <span style={{color:"#0095f6",fontWeight:"600"}}> Sign in</span> </Link>
 
                 </div>
                 Get the app.

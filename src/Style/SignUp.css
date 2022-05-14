@@ -34,7 +34,7 @@ font-family: 'Satisfy', cursive;
 .signup-box button{
   width: 80%;
   margin-bottom: 20px;
-  background-color:#f67b00;
+  background-color:black;
   border: none;
   border-radius: 5px;
   color: white;
@@ -55,7 +55,7 @@ font-family: 'Satisfy', cursive;
    padding-left: 10px;
 }
 .signup-box input[type="submit"]{
-  background-color:#f67300;
+  background-color:black;
   border: none;
   border-radius: 5px;
   margin-top: 20px;

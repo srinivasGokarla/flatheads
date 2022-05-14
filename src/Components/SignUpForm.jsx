@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./SignUp.css";
-import {isLoading,isSignup,isError} from "../../redux/signup/actions";
+import "../Style/SignUp.css";
+import {isLoading,isSignup,isError} from "../redux/signup/actions";
 import {  Navigate } from "react-router-dom";
 
 
@@ -59,35 +59,44 @@ function SignUpForm(){
         return < Navigate to={"/"} />;
     }
     return (
-        <div className="signup-box">
-             <div>
-          
-           <button>Sign Up with Google</button>
-           </div>
+       <div>
+            <h1>Create a new account</h1>
+           <div className="signup-box">
+        
           
             <div className="or">
+             
                 <div>
-                    <hr />
-                </div>
-                <div>
-                    <p>OR</p>
-                </div>
-                <div>
-                    <hr />
+                   
                 </div>
             </div>
             <form onSubmit={handleSubmit}>
-                <input type="text" name="email" placeholder="Mobile Number or Email"onChange={handlechange} />
-                <input type="text" name="full_name" placeholder="Full Name" onChange={handlechange}/>
-                <input type="text" name="username" placeholder="Username" onChange={handlechange}/>
+                
+                <input type="text" name="full_name" placeholder="First Name" onChange={handlechange}/>
+                <input type="text" name="full_name" placeholder="Last Name" onChange={handlechange}/>
+                <input type="text" name="email" placeholder="Email"onChange={handlechange} />
                 <input type="password" name="password" placeholder="Password" onChange={handlechange}/>
                   
                 <input type="submit" value={isloading?"loading...":"Sign Up"}  ></input>
             </form>
+              
+               
+            <div>
+                    <p>OR</p>
+                </div>
+                <hr />
+                
+                <br/>
+            <div>
+          
+          <button>Sign Up with Google</button>
+          </div>
             {iserror?<p>email or phone already esits</p>:null}
             
             <p>By signing up, you agree to our Terms , Data Policy and Cookies Policy .</p>
         </div>
+       </div>
+        
     )
 }
 

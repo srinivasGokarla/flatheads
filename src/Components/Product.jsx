@@ -62,7 +62,7 @@ const ProductPage = () => {
   }
   const sortBylow =(m) => {
     if(m === "l") {
-     let res = data.sort((a,b) => a.cost - b.cost)
+      let res = data.sort((a,b) => a.cost - b.cost)
      setValue([...res])
      //console.log(res)
     } else if ( m === "h" ) {
@@ -72,19 +72,6 @@ const ProductPage = () => {
     }
     
     }
-  
- 
-  // const filterByPrice1 = () => {
- 
-  //     let productPrice = data.filter((p) =>  p.price >=50000)
-  //     console.log(productPrice)
-  //     setValue([...productPrice])
-     
-    
-  
-  // }
-  
-  //console.log(setVal)
 
   
   return (
@@ -126,7 +113,7 @@ const ProductPage = () => {
    <div className=""> 
   <Button className="mt-8 w-32 " onClick= {() => {sortBylow("l")}}>Less price</Button>
   </div>
-  <div className="mt-5  bg-red-600">
+  <div className="mt-5  bg-black-600">
   <Button className="mt-8 w-32  " onClick= {() => {sortBylow("h")}}>high price</Button>
   </div>
       </ButtonGroup>
@@ -160,13 +147,13 @@ const ProductPage = () => {
           return (
             <>
               <div className="borde w-80 " key={a.id}>
-                <div className="   h-full ">
+                <div className="h-full ">
                   <div >
                     <img src={a.image} alt="" id="img" />
                   </div>
-                  <div className="b  w-2/5 text-white">
+                  <div className="b  w-2/5 text-white margin-auto">
                     <div>
-                      <button className="bg-red-500 shadow-lg rounded-2xl p-2 hover:bg-blue-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
+                      <button className="bg-blue-500 shadow-lg rounded-2xl p-2 hover:bg-black-600 shadow-blue-500/50  " onClick={() => {Send(a)}} >
                         Add to cart
                       </button>
                     </div>
@@ -183,7 +170,7 @@ const ProductPage = () => {
                     <div className="  ">
                      <div className="flex w-48">
                      
-                      <div className="text-red-400 font-bold ">
+                      <div className="text-blue-400 font-bold ">
                         <p>₹ {a.cost}</p>
                       </div>
                       

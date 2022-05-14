@@ -87,7 +87,7 @@ const NavBar = () => {
 
 								 <div className="flex p-5 text-sm">
 								 <div className="w-2/5">
-									 <img src={item.id.img[0]} alt="" />
+									 <img src={item.id.image} alt="" />
 								 </div>
 								 <div className="ml-4 ">
 									 <div className="mb-4">
