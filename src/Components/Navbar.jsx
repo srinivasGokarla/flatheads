@@ -46,17 +46,13 @@ const NavBar = () => {
 			  <div className="ml-36">
 				  <ClearIcon onClick={()=>{setLogin(false)}} className="cursor-pointer"/>
 				  </div>
-             <div className= "h-1/2 w-full p-2 bg-blue-300 pl-5" onClick={()=>{setLogin(false)}}>
+             <div className= "h-1/2 w-full p-2 bg-black-300 pl-5 color-white" onClick={()=>{setLogin(false)}}>
 				 <button onClick={() =>{handleClicklogin()}}> LOGIN/REGISTER</button>
 
                
 			 </div>
-			 <div className="text-sm h-1/2 -1/2">
-			 To access your account 
-			 </div>
-			 <div className="text-sm">
-			 & manage orders
-			 </div>
+			
+			
 			  </div>
 		  </div>
 	  }

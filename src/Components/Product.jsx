@@ -19,6 +19,10 @@ const ProductPage = () => {
 
   const [search,setSearch] = useState("")
   const [value,setValue] = useState([])
+ 
+
+
+
 	//console.log(search)
   const [val,setVal] = useState("")
 // const params = useParams()
@@ -45,6 +49,7 @@ const ProductPage = () => {
   useEffect(() => {
     fetchData();
   }, [page]);
+
 
 
 
@@ -120,6 +125,7 @@ const ProductPage = () => {
   
     </Box>
        </div>
+       
       
       <div className="container " >
     
@@ -137,7 +143,7 @@ const ProductPage = () => {
           if(search === ""){
             return a
           }else{
-            return a.title.toLowerCase().includes(search.toLowerCase())  || a.madeBy.toLowerCase().includes(search.toLowerCase())  
+            return a.title.toLowerCase().includes(search.toLowerCase())    
           }
           
         })
