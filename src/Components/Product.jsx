@@ -7,7 +7,6 @@ import { storeData } from '../redux/storeData/action';
 import Box from '@mui/material/Box';
 import { Pagination } from '@mui/material';
 
-// import {useNavigate,useParams} from 'react-router';
 import {Button ,ButtonGroup} from '@mui/material'
 import {addCart} from '../redux/Cart/action'
 
@@ -19,6 +18,8 @@ const ProductPage = () => {
 
   const [search,setSearch] = useState("")
   const [value,setValue] = useState([])
+  const [todos,setTodos] = useState([]);
+ 
 	//console.log(search)
   const [val,setVal] = useState("")
 // const params = useParams()
@@ -26,28 +27,44 @@ const ProductPage = () => {
 
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const fetchData = async () => {
-    return axios({
-      url: `http://localhost:3004/shoes?_page=${page}&_limit=20`,
-      method: 'GET',
-      params: {},
-    })
-      .then((response) => {
-        // const data =(response.data)
+  // const fetchData = async () => {
+  //   return axios({
+  //     url: `http://localhost:3004/shoes?_page=${page}&_limit=20`,
+  //     method: 'GET',
+  //     params: {},
+  //   })
+  //     .then((response) => {
+  //       // const data =(response.data)
 
-        // console.log(response.data)
-        dispatch(storeData(response.data));
-      })
+  //       // console.log(response.data)
+  //       dispatch(storeData(response.data));
+  //     })
 
-      .catch((error) => {});
-  };
+  //     .catch((error) => {});
+  // };
 
-  useEffect(() => {
-    fetchData();
-  }, [page]);
+  // useEffect(() => {
+  //   fetchData();
+  // }, [page]);
 
+useEffect(()=>{
+        getData()
+      },[page])
 
-
+      const getData = () =>{
+       
+        fetch(`http://localhost:3004/shoes?_page=${page}&_limit=10`).then(d=>d.json()).then(res=>{
+            setTodos(res)
+        
+        }).then((response) => {
+               //  const data =(response.data)
+        
+                //  console.log(response.data)
+                 dispatch(storeData(response.data));
+               })
+        
+               .catch((error) => {});
+    }
 
   const data = useSelector((state) => state.Data.data);
   const CartData = useSelector((state) => state.Cart.cart);
@@ -71,20 +88,7 @@ const ProductPage = () => {
     }
     
     }
-  
  
-  // const filterBycost1 = () => {
- 
-  //     let productcost = data.filter((p) =>  p.cost >=50000)
-  //     console.log(productcost)
-  //     setValue([...productcost])
-     
-    
-  
-  // }
-  
-  //console.log(setVal)
-
   
   return (
     <div>
@@ -152,8 +156,8 @@ const ProductPage = () => {
         {data
         .filter((el) => {
           
-          if(el.category === val){
-            return el.category ===val
+          if(el.title === val){
+            return el.title ===val
           }else if(val === ""){
               return el
           }
@@ -162,7 +166,7 @@ const ProductPage = () => {
           if(search === ""){
             return a
           }else{
-            return a.name.toLowerCase().includes(search.toLowerCase())  || a.madeBy.toLowerCase().includes(search.toLowerCase())  
+            return a.title.toLowerCase().includes(search.toLowerCase())  || a.title.toLowerCase().includes(search.toLowerCase())  
           }
           
         })
@@ -188,11 +192,7 @@ const ProductPage = () => {
                   <div className=" mt-1 mb-2  ">
                    
                       <div className="text-md font-semi-bold borde w-72 ">
-                        {a.name}
-                      </div>
-
-                      <div className="text-sm mb-5">
-                        <p>{a.madeBy}</p>
+                        {a.title}
                       </div>
                    
                     <div className="  ">
@@ -201,15 +201,7 @@ const ProductPage = () => {
                       <div className="text-red-400 font-bold ">
                         <p>₹ {a.cost}</p>
                       </div>
-                      <div className="text-gray-500 ml-5 ">
-                        <p> <del>₹{a.actual_cost}</del></p>
-                      </div>
                      </div>
-                     
-                      <div className="text-gray-500 mt-2 d2">
-                        <p>Save ₹ {a.total_savings}</p>
-                      </div>
-                     
                     </div>
                   </div>
                 </div>
