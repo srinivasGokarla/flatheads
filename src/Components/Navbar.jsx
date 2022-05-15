@@ -33,6 +33,12 @@ const NavBar = () => {
 	  function handleClicklogin() {
 		navigate('/cart')
 	  }
+	  function handleClickLogin() {
+		navigate('/login')
+	  }
+	  function handleClickSignUp() {
+		navigate('/signup')
+	  }
 	  const data = useSelector((state) => state.Cart.cart)
 	 
 
@@ -47,7 +53,9 @@ const NavBar = () => {
 				  <ClearIcon onClick={()=>{setLogin(false)}} className="cursor-pointer"/>
 				  </div>
              <div className= "h-1/2 w-full p-2 bg-black-300 pl-5 color-white" onClick={()=>{setLogin(false)}}>
-				 <button onClick={() =>{handleClicklogin()}}> LOGIN/REGISTER</button>
+				 <button onClick={() =>{handleClickSignUp()}}> SignUp</button>
+				 <br/>
+				 <button onClick={() =>{handleClickLogin()}}> LOGIN</button>
 
                
 			 </div>

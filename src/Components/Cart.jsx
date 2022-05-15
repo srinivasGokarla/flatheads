@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import Form from './SignUp'
+import  {Signup} from'./SignUp'
 export const Cart = () => {
   const data1 = useSelector((state) => state.Cart);
   console.log(data1);
@@ -8,7 +8,7 @@ export const Cart = () => {
   return(
 	<div>
     <div className=" ">
-  <Form />
+  < Signup />
     </div>
   </div>
    )
