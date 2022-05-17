@@ -28,7 +28,7 @@ function SignUpForm(){
         console.log("aaaaaa")
         dispatch(isLoading());
         console.log(isloading);
-        fetch("https://instagram-backend-dipu1-app.herokuapp.com/signup",{
+        fetch("https://flatheads1.herokuapp.com/details",{
             
             method: "POST",
             body: JSON.stringify(formData),

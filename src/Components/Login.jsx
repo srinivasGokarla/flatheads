@@ -28,7 +28,7 @@ export const Login = () => {
   
 
     const getData = () => {
-        axios.get("http://localhost:3004/details")
+        axios.get("https://flatheads1.herokuapp.com/details")
         .then((res) => setMatter(res.json()))
         .then((res) => dispatch(addTodo(res.data)));
     }

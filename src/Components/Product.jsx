@@ -32,7 +32,7 @@ const ProductPage = () => {
   const [page, setPage] = useState(1);
   const fetchData = async () => {
     return axios({
-      url: `http://localhost:3004/shoes?_page=${page}&_limit=14`,
+      url: `https://flatheads1.herokuapp.com/shoes?_page=${page}&_limit=14`,
       method: 'GET',
       params: {},
     })

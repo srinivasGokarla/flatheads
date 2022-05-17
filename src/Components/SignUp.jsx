@@ -34,7 +34,7 @@ export const Signup = () => {
     }
 
     const getTodo = () => {
-        axios.get("http://localhost:3004/details").then((res) => { dispatch(addTodo(res.data)) }).then(() => {console.log("Posted")})
+        axios.get("https://flatheads1.herokuapp.com/details").then((res) => { dispatch(addTodo(res.data)) }).then(() => {console.log("Posted")})
     }
 
     const handleSubmit = e => {
@@ -42,7 +42,7 @@ export const Signup = () => {
         if(password !== confirmPassword){
             alert("password doesn't match");
         }else{
-            // axios.post("http://localhost:3001/details",data).then(() => getTodo())
+            // axios.post("https://flatheads1.herokuapp.com/details",data).then(() => getTodo())
             console.log(data);
             window.location.href="/login";
             postData();
@@ -51,7 +51,7 @@ export const Signup = () => {
 
     const postData = () => {
         console.log("Data : ", data)
-        axios.post("http://localhost:3004/details",data).then(() => getTodo())
+        axios.post("https://flatheads1.herokuapp.com/details",data).then(() => getTodo())
     }
 
     return (
