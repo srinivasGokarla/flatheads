@@ -27,12 +27,12 @@ const ProductPage = () => {
   const [val,setVal] = useState("")
 // const params = useParams()
 // const navigate = useNavigate()
-
+//https://json-api-xcvj.onrender.com/shoes?_page=1&_limit=10
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const fetchData = async () => {
     return axios({
-      url: `https://flatheads1.herokuapp.com/shoes?_page=${page}&_limit=14`,
+      url: `https://json-api-xcvj.onrender.com/shoes?_page=${page}&_limit=14`,
       method: 'GET',
       params: {},
     })
